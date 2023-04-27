@@ -90,7 +90,7 @@ The color scheme for Moocut is a modern and sleek palette of blue and gray.
 
 The logo for Moocut features a stylized pair of scissors, symbolizing the barbershop and beauty salon focus of the application. The logo uses a blue and gray color scheme and modern font for the text. The logo can be seen at the top of the application's home page and on any marketing materials associated with the project.
 
-##Contributors
+### Contributors
 - [Reza Refahi](https://github.com/RezaRfahi).
 - [Reza Bahri](https://github.com/Rezabahri80).
 

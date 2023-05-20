@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('nation_code')->nullable()->unique();
             $table->boolean('is_admin')->default(false);
             $table->date('birthday')->nullable();
-            $table->unsignedBigInteger('vote')->default(0);
+            $table->unsignedBigInteger('vote')->nullable()->default(0);
             $table->string('address')->nullable();
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();

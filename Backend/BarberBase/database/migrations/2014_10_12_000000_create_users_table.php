@@ -15,8 +15,17 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->unsignedBigInteger('salon_id')->nullable();
+            $table->foreign('salon_id')->references('id')->on('salons')->onDelete('cascade');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->boolean('is_barber')->default(false);
+            $table->string('phone')->unique();
+            $table->string('nation_code')->nullable()->unique();
+            $table->boolean('is_admin')->default(false);
+            $table->date('birthday')->nullable();
+            $table->unsignedBigInteger('vote')->default(0);
+            $table->string('address')->nullable();
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();

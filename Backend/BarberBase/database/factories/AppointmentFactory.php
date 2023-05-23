@@ -18,12 +18,10 @@ class AppointmentFactory extends Factory
      */
     public function definition(): array
     {
-        $startTime = $this->faker->dateTimeBetween('+1 day', '+1 week');
-        $endTime = (clone $startTime)->addHour();
         return [
             'barber_id' => User::where('is_barber', true)->inRandomOrder()->first()->id,
             'client_id' => User::where('is_barber', false)->inRandomOrder()->first()->id,
-            'datetime' => $startTime,
+            'datetime' => $this->faker->dateTimeBetween('+1 day', '+1 week'),
             'status' => $this->faker->randomElement(['pending', 'confirmed', 'completed', 'cancelled']),
             'code' => Str::random(8),
             'description' => $this->faker->sentence,

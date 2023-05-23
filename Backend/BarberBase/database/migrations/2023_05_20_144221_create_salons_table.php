@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('tel')->unique();
             $table->string('postcode')->unique();
             $table->date('establish');
-            $table->enum('status', ['open', 'closed'])->default('open');
+            $table->string('status')->default(\App\Enum\SalonStatus::open->value);
             $table->time('start')->default('08:00:00');
             $table->time('finish')->default('23:00:00');
             $table->point('map')->nullable()->index('map_index');

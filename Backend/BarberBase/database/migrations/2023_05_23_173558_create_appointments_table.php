@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('client_id');
             $table->foreign('client_id')->references('id')->on('users')->onDelete('CASCADE');
             $table->timestamp('datetime');
-            $table->string('status')->default(\App\Enum\AppointmentStatus::unfinished->value);
+            $table->string('status')->default(\App\Enum\AppointmentStatus::pending->value);
             $table->string('code')->unique();
             $table->text('description')->nullable();
             $table->timestamps();

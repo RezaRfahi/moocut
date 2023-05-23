@@ -4,7 +4,8 @@ namespace App\Enum;
 
 enum AppointmentStatus : string
 {
-    case unfinished = 'unfinished';
-    case running = 'running';
-    case finished = 'finished';
+    case pending = 'unfinished';
+    case confirmed = 'running';
+    case completed = 'finished';
+    case cancelled = 'cancelled';
 }

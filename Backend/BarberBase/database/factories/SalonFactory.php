@@ -27,8 +27,9 @@ class SalonFactory extends Factory
             'status' => $this->faker->randomElement(['open', 'closed']),
             'start' => $this->faker->time('H:i:s', '08:00:00'),
             'finish' => $this->faker->time('H:i:s', '23:00:00'),
-            'map' => $this->faker->latitude().','.$this->faker->longitude(),
-            'break_days' => implode(',', $breakDays),
+            'latitude' => $this->faker->latitude(),
+            'longitude' => $this->faker->longitude(),
+            'breaks' => implode(',', $breakDays),
         ];
     }
 }

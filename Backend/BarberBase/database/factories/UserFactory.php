@@ -25,22 +25,22 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
-        $isBaraber= $this->faker->boolean(10);
+        $isBarber= $this->faker->boolean(10);
         $isAdmin= $this->faker->boolean(10);
         return [
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            'salon_id' => $isBaraber ? Salon::all()->random()->id : null,
+            'salon_id' => $isBarber ? Salon::all()->random()->id : null,
             'two_factor_secret' => null,
             'two_factor_recovery_codes' => null,
-            'is_barber' => $isBaraber,
+            'is_barber' => $isBarber,
             'phone' => $this->faker->phoneNumber,
             'nation_code' => $this->faker->unique()->numerify('##########'),
-            'isAdmin' => $isAdmin,
+            'is_admin' => $isAdmin,
             'birthday' => $this->faker->date,
-            'vote' => $isAdmin ? $this->faker->randomNumber('10000') : null,
+            'vote' => $isBarber ? $this->faker->numberBetween(0,10000) : null,
             'address' => $this->faker->address,
             'remember_token' => Str::random(10),
             'profile_photo_path' => null,

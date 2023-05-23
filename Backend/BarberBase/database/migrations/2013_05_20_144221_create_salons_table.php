@@ -21,8 +21,10 @@ return new class extends Migration
             $table->string('status')->default(\App\Enum\SalonStatus::open->value);
             $table->time('start')->default('08:00:00');
             $table->time('finish')->default('23:00:00');
-            $table->point('map')->nullable()->index('map_index');
+            $table->string('latitude')->nullable();
+            $table->string('longitude')->nullable();
             $table->text('breaks')->nullable();
+            $table->unique(['longitude', 'latitude']);
             $table->timestamps();
         });
     }

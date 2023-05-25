@@ -5,6 +5,7 @@ namespace App\Http\Controllers\V1;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreSalonRequest;
 use App\Http\Requests\UpdateSalonRequest;
+use App\Http\Resources\V1\SalonResource;
 use App\Models\Salon;
 
 class SalonController extends Controller
@@ -14,7 +15,7 @@ class SalonController extends Controller
      */
     public function index()
     {
-        //
+        return SalonResource::collection(Salon::paginate(5));
     }
 
     /**

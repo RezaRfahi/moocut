@@ -14,8 +14,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth:sanctum')->group(function (){
+    Route::prefix('v1')->group(function (){
+       Route::controller(\App\Http\Controllers\V1\SalonController::class)->prefix('salons')->group(function (){
+
+       });
+        Route::controller(\App\Http\Controllers\V1\UserController::class)->prefix('users')->group(function (){
+
+        });
+        Route::controller(\App\Http\Controllers\V1\AppointmentController::class)->prefix('appointments')->group(function (){
+
+        });
+    });
 });
 
 Route::prefix('v1')->controller(\App\Http\Controllers\V1\AuthController::class)->group(function(){

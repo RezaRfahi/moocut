@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\V1;
 
-use App\Models\Salon;
-use App\Http\Requests\StoreSalonRequest;
-use App\Http\Requests\UpdateSalonRequest;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreAppointmentRequest;
+use App\Http\Requests\UpdateAppointmentRequest;
+use App\Models\Appointment;
 
-class SalonController extends Controller
+class AppointmentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +28,7 @@ class SalonController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreSalonRequest $request)
+    public function store(StoreAppointmentRequest $request)
     {
         //
     }
@@ -35,7 +36,7 @@ class SalonController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Salon $salon)
+    public function show(Appointment $appointment)
     {
         //
     }
@@ -43,7 +44,7 @@ class SalonController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Salon $salon)
+    public function edit(Appointment $appointment)
     {
         //
     }
@@ -51,7 +52,7 @@ class SalonController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateSalonRequest $request, Salon $salon)
+    public function update(UpdateAppointmentRequest $request, Appointment $appointment)
     {
         //
     }
@@ -59,7 +60,7 @@ class SalonController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Salon $salon)
+    public function destroy(Appointment $appointment)
     {
         //
     }

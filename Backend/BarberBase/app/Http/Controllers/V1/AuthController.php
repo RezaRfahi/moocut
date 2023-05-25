@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class AuthController extends Controller
 {
@@ -42,14 +44,14 @@ class AuthController extends Controller
         ]);
 
         if (!Auth::attempt($credentials)) {
-            throw new \JsonException('Invalid Data',JsonResponse::HTTP_UNAUTHORIZED);
+            throw new \JsonException('email or password were Incorrect', JsonResponse::HTTP_UNAUTHORIZED);
         }
 
         $user = $request->user();
 
         // Generate a new token for the user
-        $token = $user->createToken('MyApp')->plainTextToken;
+        $token = $user->createToken('Moocut')->plainTextToken;
 
-        return response()->json(['token' => $token], 200);
+        return response()->json(['token' => $token], JsonResponse::HTTP_OK);
         }
 }

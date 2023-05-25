@@ -22,3 +22,8 @@ Route::prefix('v1')->controller(\App\Http\Controllers\V1\AuthController::class)-
     Route::post('register','register')->name('v1.auth:register');
     Route::post('login','login')->name('v1.auth:login');
 });
+Route::get('say',function (){
+   return response()->json([
+       'message' => 'hello'
+   ]);
+});

@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('resumes', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('barber_id');
+            $table->foreign('barber_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('file_path');
+            $table->date('date')->nullable();
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }

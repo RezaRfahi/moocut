@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('evidence', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('barber_id');
+            $table->foreign('barber_id')->references('id')->on('users')->onDelete('cascade');
+            $table->date('date');
+            $table->string('institute_name');
+            $table->text('description')->nullable();
+            $table->string('file_path')->nullable();
+            $table->float('grade', 2, 3)->nullable();
             $table->timestamps();
         });
     }

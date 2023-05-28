@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('institute_name');
             $table->text('description')->nullable();
             $table->string('file_path')->nullable();
-            $table->float('grade', 2, 3)->nullable();
+            $table->double('grade')->nullable();
             $table->timestamps();
         });
     }

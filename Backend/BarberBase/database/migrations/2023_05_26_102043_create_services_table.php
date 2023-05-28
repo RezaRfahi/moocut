@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreign('barber_id')->references('id')->on('users')->onDelete('cascade');
             $table->text('description')->nullable();
             $table->decimal('price', 8, 2);
-            $table->unique(['user_id', 'name']);
+            $table->unique(['barber_id', 'name']);
             $table->timestamps();
         });
     }

@@ -18,20 +18,32 @@ class SalonController extends Controller
         return SalonResource::collection(Salon::paginate(5));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(StoreSalonRequest $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'address' => 'required|string|max:255',
+            'tel' => 'required|string|unique:salons',
+            'postcode' => 'required|string|unique:salons',
+            'establish' => 'required|date',
+            'status' => 'required|in:open,closed',
+            'start' => 'required|date_format:H:i:s',
+            'finish' => 'required|date_format:H:i:s',
+            'latitude' => 'nullable|string',
+            'longitude' => 'nullable|string',
+            'breaks' => 'nullable|string',
+        ]);
+
+        $salon = Salon::create($validatedData);
+
+        return response()->json([
+            'message' => 'Salon created successfully',
+            'data' => $salon,
+        ], 201);
     }
 
     /**

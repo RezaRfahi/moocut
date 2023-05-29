@@ -4,7 +4,7 @@ namespace App\Http\Controllers\V1;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreSalonRequest;
-use App\Http\Requests\UpdateSalonRequest;
+use App\Http\Requests\V1\UpdateSalonRequest;
 use App\Http\Resources\V1\SalonResource;
 use App\Models\Salon;
 
@@ -24,26 +24,25 @@ class SalonController extends Controller
      */
     public function store(StoreSalonRequest $request)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'address' => 'required|string|max:255',
-            'tel' => 'required|string|unique:salons',
-            'postcode' => 'required|string|unique:salons',
-            'establish' => 'required|date',
-            'status' => 'required|in:open,closed',
-            'start' => 'required|date_format:H:i:s',
-            'finish' => 'required|date_format:H:i:s',
-            'latitude' => 'nullable|string',
-            'longitude' => 'nullable|string',
-            'breaks' => 'nullable|string',
+        $validatedData = $request->validated();
+
+        $salon = new Salon([
+            'name' => $validatedData['name'],
+            'address' => $validatedData['address'],
+            'tel' => $validatedData['tel'],
+            'postcode' => $validatedData['postcode'],
+            'establish' => $validatedData['establish'],
+            'status' => SalonStatus::open()->value,
+            'start' => '08:00:00',
+            'finish' => '23:00:00',
+            'latitude' => $validatedData['latitude'] ?? null,
+            'longitude' => $validatedData['longitude'] ?? null,
+            'breaks' => $validatedData['breaks'] ?? null,
         ]);
 
-        $salon = Salon::create($validatedData);
+        $salon->save();
 
-        return response()->json([
-            'message' => 'Salon created successfully',
-            'data' => $salon,
-        ], 201);
+        return response()->json(['message' => 'Salon created successfully', 'salon' => $salon], 201);
     }
 
     /**

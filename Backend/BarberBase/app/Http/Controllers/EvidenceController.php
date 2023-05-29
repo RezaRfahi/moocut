@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\V1\StoreEvidenceRequest;
+use App\Http\Requests\V1\UpdateEvidenceRequest;
 use App\Models\Evidence;
-use App\Http\Requests\StoreEvidenceRequest;
-use App\Http\Requests\UpdateEvidenceRequest;
 
 class EvidenceController extends Controller
 {

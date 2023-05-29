@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\V1\StoreServiceRequest;
+use App\Http\Requests\V1\UpdateServiceRequest;
 use App\Models\Service;
-use App\Http\Requests\StoreServiceRequest;
-use App\Http\Requests\UpdateServiceRequest;
 
 class ServiceController extends Controller
 {

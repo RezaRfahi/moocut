@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\V1\StoreResumeRequest;
+use App\Http\Requests\V1\UpdateResumeRequest;
 use App\Models\Resume;
-use App\Http\Requests\StoreResumeRequest;
-use App\Http\Requests\UpdateResumeRequest;
 
 class ResumeController extends Controller
 {

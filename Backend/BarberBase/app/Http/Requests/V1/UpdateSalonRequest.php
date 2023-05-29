@@ -11,7 +11,7 @@ class UpdateSalonRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,17 @@ class UpdateSalonRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required|string',
+            'address' => 'required|string',
+            'tel' => 'required|string|unique:salons,tel,' . $this->route('salon')->id,
+            'postcode' => 'required|string|unique:salons,postcode,' . $this->route('salon')->id,
+            'establish' => 'required|date',
+            'status' => 'required|string',
+            'start' => 'required|date_format:H:i:s',
+            'finish' => 'required|date_format:H:i:s',
+            'latitude' => 'nullable|string',
+            'longitude' => 'nullable|string',
+            'breaks' => 'nullable|string',
         ];
     }
 }

@@ -43,7 +43,10 @@ class SalonController extends Controller
      */
     public function update(UpdateSalonRequest $request, Salon $salon)
     {
-        //
+        $salon->update($request->validated());
+
+        return (new SalonResource($salon))
+        ->additional(['message' => 'Salon updated successfully']);
     }
 
     /**

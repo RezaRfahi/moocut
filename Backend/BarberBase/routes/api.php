@@ -21,6 +21,7 @@ Route::middleware('auth:sanctum')->group(function (){
             Route::put('/store', 'store')->name('v1.salons.store');
             Route::get('/show/{salon}', 'show')->name('v1.salons.show');
             Route::patch('/update/{salon}', 'update')->name('v1.salons.update');
+            Route::delete('/destroy/{salon}', 'destroy')->name('v1.salons.delete');
        });
         Route::controller(\App\Http\Controllers\V1\UserController::class)->prefix('users')->group(function (){
 

@@ -7,6 +7,7 @@ use App\Http\Requests\V1\StoreSalonRequest;
 use App\Http\Requests\V1\UpdateSalonRequest;
 use App\Http\Resources\V1\SalonResource;
 use App\Models\Salon;
+use Illuminate\Http\JsonResponse;
 
 class SalonController extends Controller
 {
@@ -54,6 +55,13 @@ class SalonController extends Controller
      */
     public function destroy(Salon $salon)
     {
-        //
+        $salon->delete();
+
+        return response()->json([
+            'data' => [
+                'message' => 'Salon deleted successfully.',
+                'status' => JsonResponse::HTTP_OK
+                ]
+        ]);
     }
 }

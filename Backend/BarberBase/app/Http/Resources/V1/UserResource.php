@@ -5,9 +5,8 @@ namespace App\Http\Resources\V1;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Morilog\Jalali\Jalalian;
-use const Grpc\STATUS_OK;
 
-class SalonResource extends JsonResource
+class UserResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -19,16 +18,15 @@ class SalonResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'email' => $this->email,
+            'salon_id' => $this->salon_id,
+            'is_barber' => $this->is_barber,
+            'phone' => $this->phone,
+            'nation_code' => $this->nation_code,
+            'is_admin' => $this->is_admin,
+            'birthday' => Jalalian::fromDateTime($this->birthday)->format('Y/m/d'),
+            'vote' => $this->vote,
             'address' => $this->address,
-            'tel' => $this->tel,
-            'postcode' => $this->postcode,
-            'establish' => Jalalian::fromDateTime($this->establish)->format('Y/m'),
-            'status' => $this->status,
-            'start' => $this->start,
-            'finish' => $this->finish,
-            'latitude' => $this->latitude,
-            'longitude' => $this->longitude,
-            'breaks' => $this->breaks,
             'created_at' => Jalalian::fromDateTime($this->created_at)->format('Y/m/d H:i:s'),
             'updated_at' => Jalalian::fromDateTime($this->updated_at)->format('Y/m/d H:i:s'),
         ];

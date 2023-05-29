@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\V1;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreSalonRequest;
+use App\Http\Requests\V1\StoreSalonRequest;
 use App\Http\Requests\V1\UpdateSalonRequest;
 use App\Http\Resources\V1\SalonResource;
 use App\Models\Salon;
@@ -24,25 +24,10 @@ class SalonController extends Controller
      */
     public function store(StoreSalonRequest $request)
     {
-        $validatedData = $request->validated();
+        $salon = Salon::create($request->validated());
 
-        $salon = new Salon([
-            'name' => $validatedData['name'],
-            'address' => $validatedData['address'],
-            'tel' => $validatedData['tel'],
-            'postcode' => $validatedData['postcode'],
-            'establish' => $validatedData['establish'],
-            'status' => SalonStatus::open()->value,
-            'start' => '08:00:00',
-            'finish' => '23:00:00',
-            'latitude' => $validatedData['latitude'] ?? null,
-            'longitude' => $validatedData['longitude'] ?? null,
-            'breaks' => $validatedData['breaks'] ?? null,
-        ]);
-
-        $salon->save();
-
-        return response()->json(['message' => 'Salon created successfully', 'salon' => $salon], 201);
+        return (new SalonResource($salon))
+            ->additional(['message' => 'Salon created successfully']);
     }
 
     /**

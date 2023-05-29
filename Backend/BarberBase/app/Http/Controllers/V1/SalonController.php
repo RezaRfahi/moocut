@@ -35,15 +35,7 @@ class SalonController extends Controller
      */
     public function show(Salon $salon)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Salon $salon)
-    {
-        //
+        return new SalonResource($salon);
     }
 
     /**

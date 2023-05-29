@@ -19,6 +19,7 @@ Route::middleware('auth:sanctum')->group(function (){
        Route::controller(\App\Http\Controllers\V1\SalonController::class)->prefix('salons')->group(function (){
             Route::get('/','index')->name('v1.salon.index');
             Route::put('/store', 'store')->name('v1.salons.store');
+            Route::get('/show/{salon}', 'show')->name('v1.salons.show');
        });
         Route::controller(\App\Http\Controllers\V1\UserController::class)->prefix('users')->group(function (){
 

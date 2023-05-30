@@ -23,7 +23,8 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = User::create($request->validated());
+        return UserResource::collection($user)->additional(['message' => 'user created successfully']);
     }
 
     /**
